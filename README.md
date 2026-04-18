@@ -24,7 +24,7 @@ AntiGravity Boost Tool is an autonomous knowledge ingestion and synchronization 
 
 ```powershell
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/AntiGravity_Boost_Tool.git
+git clone https://github.com/omni01-Cell/AntiGravity_Boost_Tool.git
 cd AntiGravity_Boost_Tool
 
 # Setup environment
@@ -46,7 +46,7 @@ Drop any PDF or EPUB file into the `books/` directory. The system will process i
 
 ## 🇫🇷 Origine du Projet
 
-Né du besoin de saturer l'agent Antigravity avec un volume massif de connaissances théoriques sans briser le "flux de développement", cet outil automatise la transformation de livres spécialisés en savoir actionnable pour l'IA.
+Né du besoin d’enrichir l’agent Antigravity avec un large volume de connaissances théoriques sans perturber le flux de développement, cet outil automatise la transformation de livres spécialisés en savoir directement exploitable par l’IA.
 
 ## ⚖️ License
 
