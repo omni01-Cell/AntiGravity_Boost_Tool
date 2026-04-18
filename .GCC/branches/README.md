@@ -1,0 +1,1 @@
+Ce dossier contient les fichiers markdown expliquant les impasses techniques ou les variantes rejetées explorées lors de cette session, afin d'éviter à l'agent de refaire les mêmes erreurs de jugement.
