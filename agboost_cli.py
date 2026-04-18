@@ -105,10 +105,16 @@ def _ingest_single_file(filepath: str, manifest: DocumentManifest, service: Inge
 def _launch_watcher() -> int:
     """Lance book_watcher.py en arrière-plan."""
     script_path = os.path.join(PROJECT_ROOT, "presentation", "watchers", "book_watcher.py")
+    
+    # Injection du PROJECT_ROOT dans le PYTHONPATH pour éviter les ModuleNotFoundError
+    env = os.environ.copy()
+    env["PYTHONPATH"] = PROJECT_ROOT + os.pathsep + env.get("PYTHONPATH", "")
+    
     with open(LOG_FILE, "a") as log:
         process = subprocess.Popen(
             [sys.executable, "-u", script_path],
             cwd=PROJECT_ROOT,
+            env=env,
             creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
             stdout=log,
             stderr=subprocess.STDOUT

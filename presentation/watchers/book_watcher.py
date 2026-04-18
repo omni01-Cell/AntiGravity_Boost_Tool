@@ -1,6 +1,14 @@
+import sys
 import os
 import time
 from datetime import datetime, timezone
+from pathlib import Path
+
+# Injection du répertoire racine dans le sys.path pour permettre les imports relatifs
+root_dir = Path(__file__).resolve().parent.parent.parent
+if str(root_dir) not in sys.path:
+    sys.path.insert(0, str(root_dir))
+
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
