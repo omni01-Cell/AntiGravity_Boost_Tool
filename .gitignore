@@ -31,14 +31,11 @@ pending/review/*
 !pending/review/.gitkeep
 
 # Persistent Context
-.GCC/
-.vscode/
-.agent/
-# Note: Keeping .agent and .GCC might be useful for collaboration 
-# but usually .vscode and sensitive .agent data should be ignored.
-# I will keep .agent/rules and skills if they are part of the core project.
-
-# If .GCC is part of the tool's own logic, maybe we want it.
-# But for a public repo, we don't want the user's personal GCC logs.
 .GCC/logs/*
 !.GCC/main.md
+.vscode/
+
+# Agent Logic
+.agent/*
+!.agent/rules/
+!.agent/skills/
