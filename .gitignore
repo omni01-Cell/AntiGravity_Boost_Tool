@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+venv/
+.venv/
+
+# Project Specific
+.env
+agboost.log
+agboost.pid
+test_output.txt
+import_trace.txt
+error.txt
+out.txt
+
+# Knowledge Ingestion
+books/*.pdf
+books/*.epub
+books/*.txt
+!books/.gitkeep
+pending/quarantine/*
+pending/review/*
+!pending/quarantine/.gitkeep
+!pending/review/.gitkeep
+
+# Persistent Context
+.GCC/
+.vscode/
+.agent/
+# Note: Keeping .agent and .GCC might be useful for collaboration 
+# but usually .vscode and sensitive .agent data should be ignored.
+# I will keep .agent/rules and skills if they are part of the core project.
+
+# If .GCC is part of the tool's own logic, maybe we want it.
+# But for a public repo, we don't want the user's personal GCC logs.
+.GCC/logs/*
+!.GCC/main.md

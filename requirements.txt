@@ -1,0 +1,12 @@
+google-genai
+mcp[cli]
+supabase
+watchdog
+docstrange
+weasyprint
+python-dotenv
+ebooklib
+beautifulsoup4
+lxml
+pydantic
+psutil
