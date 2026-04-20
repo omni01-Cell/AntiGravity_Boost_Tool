@@ -25,10 +25,19 @@ Garantir que le pipeline d'ingestion est actif, que les conflits de connaissance
 
 <gate id="1" name="Pipeline AGBoost (Watchdog)">
   <instruction>
-    Invoquer `ensure_watchdog_running` sur le serveur `antigravity-knowledge`.
+    1. Vérifier si AGBoost est déjà en cours d'exécution :
+       - Chercher le fichier `agboost.pid` à la racine du projet.
+       - Si le fichier existe, lire le PID et vérifier que le processus est actif (ex: `ps -p <PID>` sur Linux, ou `tasklist /FI "PID eq <PID>"` sur Windows).
+       - Si le processus est actif → le pipeline tourne déjà, passer à la Gate 2.
+    2. Si le processus n'est PAS actif (PID absent, fichier manquant, ou processus mort) :
+       - Lancer le pipeline avec la commande :
+         - **Linux** : `python agboost_cli.py start` (depuis la racine du projet)
+         - **Windows** : `AGBoost.bat start`
+       - Vérifier que le PID a été écrit dans `agboost.pid` et que le processus est vivant.
+    3. Si le serveur MCP `antigravity-knowledge` est disponible, invoquer `ensure_watchdog_running` comme vérification complémentaire.
   </instruction>
-  <verification>`[AGBoost] Watchdog actif.`</verification>
-  <fail_safe>Avertir l'utilisateur que l'ingestion automatique est suspendue.</fail_safe>
+  <verification>Le fichier `agboost.pid` existe et contient un PID d'un processus actif, OU la commande `start` a retourné `[OK]`.</verification>
+  <fail_safe>Si le lancement échoue, avertir l'utilisateur que l'ingestion automatique est suspendue et continuer la session sans bloquer.</fail_safe>
 </gate>
 
 <gate id="2" name="Synchronisation des Connaissances (Conflicts)">
